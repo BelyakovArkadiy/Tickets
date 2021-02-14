@@ -3,7 +3,8 @@ package ru.netology.manager;
 import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketRepository;
 
-
+import java.util.Arrays;
+import java.util.Comparator;
 
 
 public class TicketManager {
@@ -11,8 +12,11 @@ public class TicketManager {
     public TicketManager(TicketRepository repository) {
         this.repository = repository;
     }
-    public Ticket[] searchBy(String from, String to) {
+
+    public Ticket[] searchBy(String from, String to, Comparator<Ticket> comparator) {
+
         Ticket[] result = new Ticket[0];
+
         for (Ticket ticket : repository.findAll()) {
             if (matches(ticket, from, to)) {
                 Ticket[] tmp = new Ticket[result.length + 1];
@@ -21,6 +25,7 @@ public class TicketManager {
                 result = tmp;
             }
         }
+        Arrays.sort(result, comparator);
         return result;
     }
     public boolean matches(Ticket ticket, String from, String to) {

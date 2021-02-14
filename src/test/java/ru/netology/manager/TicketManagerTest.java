@@ -33,7 +33,7 @@ class TicketManagerTest {
         TicketManager manager = new TicketManager(repository);
         Ticket[] actual = manager.searchBy("ALA", "SWE");
         Ticket[] expected = new Ticket[]{ticket1, ticket5, ticket3, ticket2};
-        Arrays.sort(actual);
+
         assertArrayEquals(actual, expected);
 
 
@@ -46,7 +46,7 @@ class TicketManagerTest {
         TicketManager manager = new TicketManager(repository);
         Ticket[] actual = manager.searchBy("ALA", "SWE");
         Ticket[] expected = new Ticket[]{ticket5};
-        Arrays.sort(actual);
+
         assertArrayEquals(actual, expected);
 
     }
@@ -60,7 +60,7 @@ class TicketManagerTest {
         TicketManager manager = new TicketManager(repository);
         Ticket[] actual = manager.searchBy("ALA", "SWE");
         Ticket[] expected = new Ticket[]{};
-        Arrays.sort(actual);
+
         assertArrayEquals(actual, expected);
 
     }
@@ -74,7 +74,7 @@ class TicketManagerTest {
         TicketManager manager = new TicketManager(repository);
         Ticket[] actual = manager.searchBy("ALA", "SWE");
         Ticket[] expected = new Ticket[]{ticket1, ticket5}; // два билета с одинаковой стоимостью, сортировка происходит по индексу
-        Arrays.sort(actual);
+
         assertArrayEquals(actual, expected);
 
     }
